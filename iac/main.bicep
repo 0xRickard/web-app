@@ -30,21 +30,10 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
   }
 }
 
-resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: '${webAppName}-appinsights'
-  location: location
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-  }
-}
-
 resource appServiceAppSettings 'Microsoft.Web/sites/config@2020-06-01' = {
   parent: appService
   name: 'appsettings'
   properties: {
-    APPINSIGHTS_INSTRUMENTATIONKEY: appInsights.properties.InstrumentationKey
-    APPLICATIONINSIGHTS_CONNECTION_STRING: appInsights.properties.ConnectionString
     WEBSITE_RUN_FROM_PACKAGE: '1'
   }
 }
