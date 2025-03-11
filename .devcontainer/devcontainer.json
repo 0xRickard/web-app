@@ -14,16 +14,17 @@
                 "ms-azuretools.vscode-bicep",
                 "GitHub.copilot-chat",
                 "GitHub.copilot"
-            ],
-            "settings": {
-                "remote.autoForwardPorts": true,
-                "remote.autoForwardPortsSource": "hybrid",
-                "remote.otherPortsAttributes": {
-                    "onAutoForward": "ignore"
-                }
-            }
+            ]          
         }
     },
-    "postStartCommand": "dotnet dev-certs https --trust",
-    "forwardPorts": []
+    "forwardPorts": [
+        5069
+    ],
+    "portsAttributes": {
+        "5069": {
+            "label": "App",
+            "onAutoForward": "notify"
+        }
+    }
+
 }
